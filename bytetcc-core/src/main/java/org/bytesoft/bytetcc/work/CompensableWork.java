@@ -23,6 +23,9 @@ import org.bytesoft.transaction.TransactionRecovery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 通过`TransactionRecovery`重试执行被中止的事务的后台线程
+ */
 public class CompensableWork implements Work, CompensableBeanFactoryAware {
 	static final Logger logger = LoggerFactory.getLogger(CompensableWork.class);
 

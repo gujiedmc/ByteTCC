@@ -40,6 +40,9 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * 扫描 @Compensable 注解的Bean
+ */
 public class CompensableAnnotationConfigValidator
 		implements SmartInitializingSingleton, ApplicationContextAware, BeanFactoryAware {
 	static final Logger logger = LoggerFactory.getLogger(CompensableAnnotationConfigValidator.class);
@@ -84,10 +87,12 @@ public class CompensableAnnotationConfigValidator
 			}
 
 			Class<?> interfaceClass = compensable.interfaceClass();
+			// 只能声明在接口上
 			if (interfaceClass.isInterface() == false) {
 				throw new IllegalStateException("Compensable's interfaceClass must be a interface.");
 			}
 
+			// 对声明类的接口上的每个方法进行检查
 			Method[] methodArray = interfaceClass.getDeclaredMethods();
 			for (int j = 0; j < methodArray.length; j++) {
 				Method interfaceMethod = methodArray[j];
@@ -109,6 +114,7 @@ public class CompensableAnnotationConfigValidator
 			compensables.put(beanName, compensable);
 		}
 
+		// 对confirm和cancel的实现的每个方法进行校验
 		Iterator<Map.Entry<String, Compensable>> itr = compensables.entrySet().iterator();
 		while (itr.hasNext()) {
 			Map.Entry<String, Compensable> entry = itr.next();
@@ -121,6 +127,7 @@ public class CompensableAnnotationConfigValidator
 					throw new FatalBeanException(
 							String.format("The confirm bean(id= %s) cannot be a compensable service!", confirmableKey));
 				}
+				// 通过配置的confirm bean名称获取Bean实例
 				Class<?> clazz = otherServiceMap.get(confirmableKey);
 				if (clazz == null) {
 					throw new IllegalStateException(String.format("The confirm bean(id= %s) is not exists!", confirmableKey));

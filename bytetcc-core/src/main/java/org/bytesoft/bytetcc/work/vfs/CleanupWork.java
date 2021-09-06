@@ -41,6 +41,9 @@ import org.bytesoft.transaction.supports.serialize.XAResourceDeserializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 定期清理数据库和日志文件中已完成的事务记录的后台线程
+ */
 public class CleanupWork implements Work, LocalResourceCleaner, CompensableEndpointAware, CompensableBeanFactoryAware {
 	static final Logger logger = LoggerFactory.getLogger(CleanupWork.class);
 	static final byte[] IDENTIFIER = "org.bytesoft.bytetcc.resource.cleanup".getBytes();

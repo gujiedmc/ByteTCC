@@ -25,6 +25,9 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.transaction.annotation.AnnotationTransactionAttributeSource;
 
+/**
+ * 检查Spring事务声明方式是否为注解
+ */
 public class TransactionConfigDefinitionValidator implements BeanFactoryPostProcessor {
 
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {

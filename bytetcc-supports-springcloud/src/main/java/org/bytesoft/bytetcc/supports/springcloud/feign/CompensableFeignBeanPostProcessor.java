@@ -27,6 +27,9 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.cloud.openfeign.FeignClient;
 
+/**
+ * 对 Feign的实现进行动态代理
+ */
 public class CompensableFeignBeanPostProcessor implements BeanPostProcessor, InitializingBean {
 	static final String FEIGN_CLAZZ_NAME = "feign.ReflectiveFeign$FeignInvocationHandler";
 

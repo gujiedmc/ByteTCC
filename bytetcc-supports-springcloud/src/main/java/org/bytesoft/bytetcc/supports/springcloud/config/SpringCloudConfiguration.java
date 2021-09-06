@@ -90,6 +90,7 @@ public class SpringCloudConfiguration implements TransactionManagementConfigurer
 	static final String CONSTANT_MONGODBURI = "spring.data.mongodb.uri";
 
 	private ApplicationContext applicationContext;
+	// 实例标识 ip:applicationName:port
 	private String identifier;
 	private Environment environment;
 	private CompensableBeanFactory beanFactory;

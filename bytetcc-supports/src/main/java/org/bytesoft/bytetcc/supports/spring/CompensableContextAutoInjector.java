@@ -27,6 +27,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
+/**
+ * 为实现 CompensableContextAware 的 bean注入 CompensableContext
+ */
 public class CompensableContextAutoInjector implements CompensableBeanFactoryAware, BeanPostProcessor {
 	static final Logger logger = LoggerFactory.getLogger(CompensableContextAutoInjector.class);
 
