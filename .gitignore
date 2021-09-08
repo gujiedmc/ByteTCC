@@ -27,3 +27,12 @@ target
 /bytetcc-supports-springcloud/.project
 /bytetcc-supports-springboot/.classpath
 /bytetcc-supports-springboot/.project
+
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+*.lock
+rebel.xml
